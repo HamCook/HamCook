@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹훅 전송기</title>
+  </head>
+  <body>
+    <button onclick="sendMessage()">Send</button>
+  </body>
+
+  <script>
+    function sendMessage() {
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/803818794022862859/2DsBI8TwwgzkyO1c43lADgUOmDjlkzZG58I_KlKNBlC2vXrbiBN2oilHQyZ0B8mHhUJW");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      var params = {
+        username: "경기도교통 경찰청",
+        avatar_url: "https://steamuserimages-a.akamaihd.net/ugc/758222151859395261/9E35BCBD67AB1351262F5A402DF09E824954D162/?imw=200&imh=200&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
+        content: ">>> test"
+      }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+</html>
