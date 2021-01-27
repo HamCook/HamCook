@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>웹훅 전송기</title>
+    <title>HamCook</title>
   </head>
   <body>
     <button onclick="sendMessage()">Send</button>
@@ -13,16 +13,27 @@
     function sendMessage() {
       var request = new XMLHttpRequest();
       request.open("POST", "https://discord.com/api/webhooks/803818794022862859/2DsBI8TwwgzkyO1c43lADgUOmDjlkzZG58I_KlKNBlC2vXrbiBN2oilHQyZ0B8mHhUJW");
-
       request.setRequestHeader('Content-type', 'application/json');
+
+      var myEmbed = {
+        author: {
+          name: "경찰청 안내"
+        },
+        title: "가이드",
+        description: "블라블라",
+        color: hexToDecimal("#00D8FF")
+      }
 
       var params = {
         username: "경기도교통 경찰청",
-        avatar_url: "https://steamuserimages-a.akamaihd.net/ugc/758222151859395261/9E35BCBD67AB1351262F5A402DF09E824954D162/?imw=200&imh=200&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
-        content: ">>> test"
+        embeds: [ myEmbed ]
       }
 
       request.send(JSON.stringify(params));
+
+      function hexToDecimal(hex) {
+        return parseInt(hex.replace("#",""), 16)
+      }
     }
   </script>
 </html>
